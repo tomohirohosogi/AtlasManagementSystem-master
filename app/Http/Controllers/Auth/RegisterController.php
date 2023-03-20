@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormRequest;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -61,6 +62,7 @@ class RegisterController extends Controller
     {
         DB::beginTransaction();
         try{
+
             $old_year = $request->old_year;
             $old_month = $request->old_month;
             $old_day = $request->old_day;
@@ -79,8 +81,9 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
-            $user = User::findOrFail($user_get->id);
-            $user->subjects()->attach($subjects);
+
+
+
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Users\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,6 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        //
         DB::table('users')->insert([
             'over_name' => '細木',
             'under_name' => '智広',
@@ -23,6 +23,5 @@ class UsersTableSeeder extends Seeder
             'role' => '1',
             'password' => '11111111',
         ]);
-
     }
 }
