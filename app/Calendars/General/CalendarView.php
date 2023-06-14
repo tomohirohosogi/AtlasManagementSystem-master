@@ -39,9 +39,11 @@ class CalendarView{
       foreach($days as $day){
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");
-
+        //ここで過去日の選別（if=過去、ales=今日以降）
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td">';
+          $html[] = '<td class="yester-day border">';
+          $html[] = '<p2>受付終了</p2>';
+
         }else{
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
@@ -56,12 +58,15 @@ class CalendarView{
           }else if($reservePart == 3){
             $reservePart = "リモ3部";
           }
+
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">a</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+          //ここにモーダル削除onclick = "return confirm('削除してもよろしいですか。')
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" onclick="return confirm("本当に削除しますか？")
+          " style="font-size:12px" '. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts". $deletePart >';
           }
         }else{
           $html[] = $day->selectPart($day->everyDay());

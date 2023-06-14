@@ -16,7 +16,7 @@ use Auth;
 class PostsController extends Controller
 {
     public function show(Request $request){
-        $posts = Post::with('user', 'postComments')->get();
+        $posts = Post::withCount('user', 'postComments')->get();
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
@@ -71,6 +71,17 @@ class PostsController extends Controller
     }
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
+        return redirect()->route('post.input');
+    }
+    public function subCategoryCreate(Request $request){
+
+
+        subCategory::create([
+            'sub_category' => $request->sub_category_name,
+            'main_category_id' => $request->category_id
+
+
+        ]);
         return redirect()->route('post.input');
     }
 
