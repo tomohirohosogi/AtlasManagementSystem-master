@@ -13,7 +13,7 @@ class RegisterFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -33,6 +33,7 @@ class RegisterFormRequest extends FormRequest
     return parent::prepareForValidation();
     }
 
+
     public function rules()
     {
         return [
@@ -49,11 +50,23 @@ class RegisterFormRequest extends FormRequest
             //既定のもの以外無効済
             'role' => ['required','in:1,2,3,4'],
             'password' => ['required','between:8,30','same:password_confirmation',],
+
+            'over_name' => 'required|string||',
+            'under_name' => 'required|string||',
+            'over_name_kana' => 'required|string|',
+            'under_name_kana' => 'required|string||',
+            'mail_address' => 'required|string|email',
+            'sex' => 'required|string||',
+            'birth_day' => 'required|string||',
+            'role' => 'required|string||',
+            'password' => 'required|string|between:8,16',
+
         ];
     }
     public function messages()
     {
         return [
+
             //姓
             'over_name.required' => '名前は必須項目です
             ',
@@ -95,6 +108,7 @@ class RegisterFormRequest extends FormRequest
             'password.required' => 'パスワードは必須です',
             'password.between' => 'パスワードは8文字以上30文字以内で入力してください',
             'password.same' => '確認用パスワードと一致しません',
+
         ];
     }
 }
