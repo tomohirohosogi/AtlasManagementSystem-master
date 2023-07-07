@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Calendars\General\CalendarView;
 use App\Models\Calendars\ReserveSettings;
 use App\Models\Calendars\Calendar;
-use App\Models\USers\User;
+use App\Models\Users\User;
 use Auth;
 use DB;
 
@@ -34,5 +34,8 @@ class CalendarsController extends Controller
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+    public function calendarDalete(){
+
     }
 }

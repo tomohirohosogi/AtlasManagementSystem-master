@@ -17,6 +17,7 @@ class CalendarView{
 
   function render(){
     $html = [];
+
     $html[] = '<div class="calendar text-center">';
     $html[] = '<table class="table">';
     $html[] = '<thead>';
@@ -57,22 +58,36 @@ class CalendarView{
             $reservePart = "リモ3部";
           }
 
+
           //訳→もし予約データがあるならば
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'. $reservePart .'</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          //ここにモーダル削除onclick = "return confirm('削除してもよろしいですか。')
+
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            //テスト版
+            $html[] = '<button type="submit" id="modal-open" class= "btn btn-danger p-0 w-75"　name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            $html[] =  '<div id="modal-content">
+                  <div>予約日：'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'</div>
+                  <div>時間：'. $reservePart .'</div>
+                  <div>上記の時間をキャンセルしてもよろしいですか？</div>
+	                <p>
+                    <button>
+                      <a id="modal-close" class="button-link">閉じる</a>
+                    </button>
+                    <button>
+                      <a id="delete" class="">キャンセル</a>
+                    </button>
+                  </p>
+                </div>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         //↓にif今日以降ならばを追加
         }else{
+          $html[] = $day->selectPart($day->everyDay());
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<a>受付終了</a>';
           }else {
-            $html[] = $day->selectPart($day->everyDay());
           }
 
         }
