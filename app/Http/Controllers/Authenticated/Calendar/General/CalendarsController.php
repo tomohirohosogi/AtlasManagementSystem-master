@@ -23,6 +23,7 @@ class CalendarsController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
+
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $keys => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $keys)->where('setting_part', $value)->first();
@@ -35,6 +36,7 @@ class CalendarsController extends Controller
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
+    //予約の逆をやる。
     public function calendarDalete(){
 
     }

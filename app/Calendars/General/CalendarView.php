@@ -65,29 +65,30 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           }else{
+            //お試し
+            $html[] ='
+            <div class="modal-open-button">
+    <a class="js-open-button" href="" date_title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-text="'.$reservePart.'">open</a>
+</div>
+
+    <div class="modal-contact">
+    <p>test</p>
+    <div class="delete-title">
+          <input name="title">
+        </div>
+    <button class="js-close-button">閉じる</button>
+    </div>
+    ';
             //テスト版
-            $html[] = '<button type="submit" id="modal-open" class= "btn btn-danger p-0 w-75"　name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] =  '<div id="modal-content">
-                  <div>予約日：'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'</div>
-                  <div>時間：'. $reservePart .'</div>
-                  <div>上記の時間をキャンセルしてもよろしいですか？</div>
-	                <p>
-                    <button>
-                      <a id="modal-close" class="button-link">閉じる</a>
-                    </button>
-                    <button>
-                      <a id="delete" class="">キャンセル</a>
-                    </button>
-                  </p>
-                </div>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
+
         //↓にif今日以降ならばを追加
         }else{
           $html[] = $day->selectPart($day->everyDay());
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<a>受付終了</a>';
           }else {
+
           }
 
         }
