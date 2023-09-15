@@ -2,8 +2,8 @@ $(function () {
   //開く//
   $('.js-open-button').on('click', function () {
     $('.modal-contact').fadeIn();
-    var title = $(this).attr('date_title');
-    $('.modal-title input').val(title);
+    var title = $(this).attr('data-title');
+    $('.data-title input').data(title);//valだと文字出力できない//
     return false;
 
 

@@ -104,9 +104,9 @@ class PostsController extends Controller
 
     public function likeBulletinBoard(){
         $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
-        $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
+        $posts = Post::withCount('user')->whereIn('id', $like_post_id)->get();
         $like = new Like;
-        return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
+        return view('authenticated.BulletinBoard.post_like', compact('posts', 'like'));
     }
 
     public function postLike(Request $request){

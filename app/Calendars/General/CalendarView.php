@@ -68,17 +68,18 @@ class CalendarView{
             //お試し
             $html[] ='
             <div class="modal-open-button">
-    <a class="js-open-button" href="" date_title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-text="'.$reservePart.'">open</a>
+    <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-text="'.$reservePart.'">open</a>
 </div>
 
     <div class="modal-contact">
     <p>test</p>
-    <div class="delete-title">
+    <div class="data-title">
           <input name="title">
         </div>
     <button class="js-close-button">閉じる</button>
     </div>
     ';
+    $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             //テスト版
           }
 
