@@ -33,9 +33,11 @@
             <p>
               <span>{{ $comment->commentUser($comment->user_id)->over_name }}</span>
               <span>{{ $comment->commentUser($comment->user_id)->under_name }}</span>さん
+
             </p>
             <p>{{ $comment->comment }}</p>
           </div>
+          <div>{{$comment->count('comment')}}</div>
           @endforeach
         </div>
       </div>
