@@ -111,4 +111,5 @@
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>
 </div>
+<!-- しゅうせい -->
 @endsection
