@@ -64,7 +64,7 @@ class PostsController extends Controller
             'post' => $request->post_body,
         ]);
 
-        return redirect()->route('post.detail', ['id' => $request->post_id]);
+        return redirect()->route('post.edit', ['id' => $request->post_id]);
     }
 
     public function postDelete($id){

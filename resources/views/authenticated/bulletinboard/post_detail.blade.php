@@ -67,14 +67,20 @@
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
         </div>
         <ul class="error">
-          @foreach ($errors->all() as $error)
-          <li>{{$error}}</li>
-          @endforeach
+          @if ($errors->any())
+          <script src="{{ asset('js/modal.js') }}"></script>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          @else
+          <p class="edit-error-non">エラー無し</p>
+          @endif
         </ul>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+          <a ><input id="js-modal-edit" type="submit" class="btn btn-primary d-block" value="編集"></a>
+
         </div>
       </div>
       {{ csrf_field() }}

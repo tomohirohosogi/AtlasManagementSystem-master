@@ -65,7 +65,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           }else{
-            //お試し
+            //お試しモーダル
             $html[] ='
             <div class="modal-open-button">
     <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-text="'.$reservePart.'">open</a>

@@ -63,4 +63,7 @@ $(function () {
     return false;
   });
 
+  $('.js-modal').fadeIn();
+
+
 });

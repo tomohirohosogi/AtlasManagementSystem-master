@@ -17,6 +17,11 @@ class SelectIds implements DisplayUsers{
     }else{
       $role = array($role);
     }
+    if(is_null($subjects)){
+      $subjects = ['1', '2', '3'];
+    }else{
+      $subjects = array($subjects);
+    }
 
     if(is_null($keyword)){
       $users = User::with('subjects')
