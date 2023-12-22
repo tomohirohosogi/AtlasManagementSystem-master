@@ -68,14 +68,17 @@ class CalendarView{
             //お試しモーダル
             $html[] ='
             <div class="modal-open-button">
-    <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-text="'.$reservePart.'">open</a>
+    <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-time="'.$reservePart.'">open</a>
 </div>
 
     <div class="modal-contact">
     <p>test</p>
     <div class="data-title">
-          <input name="title">
-        </div>
+          予約日：<text name="title">
+    </div>
+    <div class="data-time">
+          時間：<text name="time">
+    </div>
     <button class="js-close-button">閉じる</button>
     </div>
     ';

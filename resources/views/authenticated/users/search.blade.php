@@ -94,7 +94,7 @@
             <label>選択科目</label>
             @foreach($subjects as $subject)
               <div class="">
-                <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
+                <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
                 <label>{{ $subject->subject }}</label>
               </div>
           @endforeach
@@ -102,13 +102,13 @@
         </div>
       </div>
       <div>
-        <input type="reset" value="リセット" form="userSearchRequest">
+        <input type="reset" name="" value="リセット" form="userSearchRequest">
       </div>
       <div>
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
     </div>
-    <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
+    <form action="{{ route('user.show') }}" method="get" id="userSearchRequest" form="userSearchRequest"></form>
   </div>
 </div>
 <!-- しゅうせい -->

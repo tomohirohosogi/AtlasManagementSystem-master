@@ -2,6 +2,9 @@
 @section('content')
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
+    @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
@@ -67,14 +70,7 @@
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
         </div>
         <ul class="error">
-          @if ($errors->any())
-          <script src="{{ asset('js/modal.js') }}"></script>
-            @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-          @else
-          <p class="edit-error-non">エラー無し</p>
-          @endif
+
         </ul>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>

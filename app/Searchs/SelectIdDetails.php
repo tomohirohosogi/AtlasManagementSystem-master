@@ -34,7 +34,7 @@ class SelectIdDetails implements DisplayUsers{
       ->whereIn('role', $role);
     })
     ->whereHas('subjects', function($q) use ($subjects){
-      $q->whereIn('subjects_id', $subjects);//2
+      $q->whereIn('subjects.id', $subjects);//2subjects.id
     })
     ->orderBy('id', $updown)->get();
     return $users;

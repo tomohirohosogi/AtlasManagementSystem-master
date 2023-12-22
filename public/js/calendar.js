@@ -3,7 +3,9 @@ $(function () {
   $('.js-open-button').on('click', function () {
     $('.modal-contact').fadeIn();
     var title = $(this).attr('data-title');
-    $('.data-title input').data(title);//valだと文字出力できない//
+    $('.data-title text').text(title);
+    var time = $(this).attr('data-time');
+    $('.data-time text').text(time);
     return false;
 
 
