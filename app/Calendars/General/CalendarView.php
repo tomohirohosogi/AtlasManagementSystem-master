@@ -68,21 +68,28 @@ class CalendarView{
             //お試しモーダル
             $html[] ='
             <div class="modal-open-button">
-    <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-time="'.$reservePart.'">open</a>
-</div>
+              <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-time="'.$reservePart.'">open</a>
+            </div>
 
-    <div class="modal-contact">
-    <p>test</p>
-    <div class="data-title">
-          予約日：<text name="title">
-    </div>
-    <div class="data-time">
-          時間：<text name="time">
-    </div>
-    <button class="js-close-button">閉じる</button>
-    </div>
-    ';
-    $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            <div class="modal-contact">
+              <p>test</p>
+              <div class="data-title">
+                予約日：<text name="title">
+              </div>
+              <div class="date-time">
+                時間：<text name="time">
+              </div>
+              <a>上記の予約をキャンセルしてもよろしいですか？</a>
+              <button class="js-close-button">閉じる</button>
+              <form action="/cancel/calendar" method="post" id="cancelParts">'.csrf_field().'
+                <button class="cancel">
+                <input type="submit" class="" value="キャンセル" form="cancelParts">
+                <input type="hidden" name="getPart[]" class="time" value="" form="cancelParts">
+                <input type="hidden" name="getData[]" class="data" value="" form="cancelParts">
+              </form>
+            </div>';
+
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             //テスト版
           }
 
@@ -105,7 +112,7 @@ class CalendarView{
     $html[] = '</table>';
     $html[] = '</div>';
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
-    $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
+
 
     return implode('', $html);
   }

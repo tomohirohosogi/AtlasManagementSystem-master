@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::namespace('General')->group(function(){
                 Route::get('/calendar/{user_id}', 'CalendarsController@show')->name('calendar.general.show');
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
+                Route::post('/cancel/calendar', 'CalendarsController@cancel')->name('cancelParts');
 
             });
             Route::namespace('Admin')->group(function(){

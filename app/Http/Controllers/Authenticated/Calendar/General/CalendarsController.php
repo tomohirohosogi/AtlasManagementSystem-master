@@ -25,6 +25,8 @@ class CalendarsController extends Controller
             $getPart = $request->getPart;
             $getDate = $request->getData;
 
+
+
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $keys => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $keys)->where('setting_part', $value)->first();
@@ -38,7 +40,23 @@ class CalendarsController extends Controller
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
     //予約の逆をやる。
-    public function calendarDalete(){
+    public function cancel(Request $request){
+        DB::beginTransaction();
+        try{
+            $getPart = $request->getPart;
+            $getDate = $request->getData;
+            dd($getPart);
 
+            $reserveDays = array_filter(array_combine($getDate, $getPart));
+            foreach($reserveDays as $keys => $value){
+                $reserve_settings = ReserveSettings::where('setting_reserve', $keys)->where('setting_part', $value)->first();
+                $reserve_settings->increment('limit_users');
+                $reserve_settings->users()->detach(Auth::id());
+            }
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+        }
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }
