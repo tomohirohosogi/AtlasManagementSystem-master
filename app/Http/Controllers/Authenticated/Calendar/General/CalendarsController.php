@@ -24,6 +24,7 @@ class CalendarsController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
+            //受付終了部分が反映されてない
 
 
 
@@ -45,7 +46,6 @@ class CalendarsController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
-            dd($getPart);
 
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $keys => $value){

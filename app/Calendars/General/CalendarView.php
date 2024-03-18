@@ -62,7 +62,7 @@ class CalendarView{
           //訳→もし予約データがあるならば
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'. $reservePart .'</p>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+
 
           }else{
             //お試しモーダル
@@ -95,10 +95,11 @@ class CalendarView{
 
         //↓にif今日以降ならばを追加
         }else{
-          $html[] = $day->selectPart($day->everyDay());
+
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<a>受付終了</a>';
           }else {
+            $html[] = $day->selectPart($day->everyDay());
 
           }
 
