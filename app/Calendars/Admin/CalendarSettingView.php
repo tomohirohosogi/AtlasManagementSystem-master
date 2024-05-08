@@ -1,4 +1,4 @@
-<?php
+<?php //スクール枠登録//
 namespace App\Calendars\Admin;
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;

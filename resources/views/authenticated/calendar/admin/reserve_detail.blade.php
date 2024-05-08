@@ -11,7 +11,7 @@
           <th class="w-25">名前</th>
         </tr>
         <tr class="text-center">
-          <td class="w-25"></td>
+          <td class="w-25">{{$date}}</td>
           <td class="w-25"></td>
         </tr>
       </table>

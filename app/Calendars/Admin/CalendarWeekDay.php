@@ -1,4 +1,4 @@
-<?php
+<?php //スクール予約確認//
 namespace App\Calendars\Admin;
 
 use Carbon\Carbon;
@@ -31,13 +31,15 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<p  class="day_part m-0 pt-1">1部<a href="http://127.0.0.1:8000/calendar/{id}/{data}/{part?}">'.$one_part->users->count().'</a></p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<p class="day_part m-0 pt-1">2部<a href="{{route(calendar.admin.detail)}},[id => $$reservePersons->id]">'.$two_part->users->count().'</p>';
+
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<p class="day_part m-0 pt-1">3部<a href="{{route(calendar.admin.detail)}}">'.$three_part->users->count().'</p>';
+
     }
     $html[] = '</div>';
 
