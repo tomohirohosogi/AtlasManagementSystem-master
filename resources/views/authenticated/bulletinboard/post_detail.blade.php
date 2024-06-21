@@ -2,6 +2,8 @@
 @section('content')
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
+    {{--投稿一覧からとんだコメント投稿ページ--}}
+    {{--バリデーション--}}
     @foreach ($errors->all() as $error)
             <li>{{$error}}</li>
             @endforeach
@@ -11,9 +13,11 @@
           <div>
           </div>
           <div>
+            {{--編集ページへ。その投稿のタイトルと投稿とIDをモーダルに送付--}}
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
 
-            <button type="submit" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick = "return confirm('削除してもよろしいですか。')">削除
+            {{--削除のルーティング適用削除をクリックでポップアップ出現その際IDを送付--}}
+            <button type="submit" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick = "return confirm('削除してもよろしいですか。')"class="delete-modal-open">削除
           </div>
         </div>
 
@@ -30,6 +34,7 @@
       </div>
       <div class="p-3">
         <div class="comment_container">
+          {{----}}
           <span class="">コメント</span>
           @foreach($post->postComments as $comment)
           <div class="comment_area border-top">

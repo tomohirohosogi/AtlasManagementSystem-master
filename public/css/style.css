@@ -84,6 +84,41 @@ li {
   width: 70%;
 }
 
+#part_btn {
+  margin: 0 auto;
+  background-color: red;
+  color: #EEE;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  ;
+}
+
+#part_text {
+  color: #EEE;
+}
+
+.js-close-button {
+  background-color: blue;
+  color: #D3D3D3;
+  border-radius: 5px;
+  width: 100px;
+  height: 25px;
+  float: left;
+  border: none;
+}
+
+.js-cancel-button {
+  background-color: red;
+  color: #D3D3D3;
+  border-radius: 5px;
+  width: 100px;
+  height: 25px;
+  float: right;
+  border: none;
+}
+
+
 /* モーダル */
 /*掲示板更新*/
 .modal {
@@ -117,7 +152,7 @@ li {
   z-index: 20;
   width: 800px;
   max-width: calc(100% - 20px * 2);
-  height: 700px;
+  height: 200px;
   max-height: calc(100% - 20px * 2);
   background: #fff;
   top: 50%;
@@ -206,6 +241,13 @@ li {
   display: none;
 }
 
+.delete-modal-open {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+
 /*旧型*/
 
 
@@ -251,6 +293,12 @@ li {
 .error_message {
   font-size: 12px;
   color: red;
+}
+
+.post_status {
+  position: relative;
+  left: 600px;
+  /* 左から20px */
 }
 
 /* 掲示板 詳細画面 */

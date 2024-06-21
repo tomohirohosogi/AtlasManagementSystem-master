@@ -6,6 +6,7 @@
     <div class="">
       <p class="mb-0">カテゴリー</p>
       <select class="w-100" form="postCreate" name="post_category_id">
+        {{--メインカテゴリ情報を引き込み--}}
         @foreach($main_categories as $main_category)
         <option label="{{ $main_category->main_category }}">{{ $main_category->main_category }}</option>
         <!-- サブカテゴリー表示 -->
@@ -13,6 +14,7 @@
       </select>
     </div>
     <div class="mt-3">
+      {{--@if($errors)でバリデーション適応--}}
       @if($errors->first('post_title'))
       <span class="error_message">{{ $errors->first('post_title') }}</span>
       @endif
@@ -24,6 +26,7 @@
       <span class="error_message">{{ $errors->first('post_body') }}</span>
       @endif
       <p class="mb-0">投稿内容</p>
+      {{--oldでエラー時に原文残る--}}
       <textarea class="w-100" form="postCreate" name="post_body">{{ old('post_body') }}</textarea>
     </div>
     <div class="mt-3 text-right">
@@ -53,6 +56,7 @@
         <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
       </div>
+      {{--カテゴリ追加のルーティング--}}
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
 

@@ -62,3 +62,7 @@ Route::group(['middleware' => 'auth'], function(){
         });
     });
 });
+
+Route::get('/hello', function () {
+    return 'Hello, World!';
+});

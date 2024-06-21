@@ -17,6 +17,7 @@
 
 <body class="all_content">
   <div class="d-flex">
+    {{--各ルーティングで対応するページに飛ぶカレンダー機能のあるルーティングにはIDなどの情報も一緒に飛ばしている--}}
     <div class="sidebar">
       @section('sidebar')
       <p><a href="{{ route('top.show') }}">トップ</a></p>

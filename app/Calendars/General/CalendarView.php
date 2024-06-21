@@ -68,12 +68,12 @@ class CalendarView{
           }else{
             //お試しモーダル
             $html[] ='
-            <div class="modal-open-button">
-              <a class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-time="'.$reservePart.'">open</a>
+            <div id="part_btn"class="modal-open-button">
+              <a id="part_text" class="js-open-button" href="" data-title="'.$day->authReserveDate($day->everyDay())->first()->setting_reserve.'"date-time="'.$reservePart.'">'.$reservePart.'</a>
             </div>
 
             <div class="modal-contact">
-              <p>test</p>
+
               <div class="data-title">
                 予約日：<text name="title">
               </div>
@@ -81,12 +81,14 @@ class CalendarView{
                 時間：<text name="time">
               </div>
               <a>上記の予約をキャンセルしてもよろしいですか？</a>
-              <button class="js-close-button">閉じる</button>
+
               <form action="/cancel/calendar" method="post" id="cancelParts">'.csrf_field().'
-                <button class="cancel">
-                <input type="submit" class="" value="キャンセル" form="cancelParts">
+                <button class="js-close-button">閉じる</button>
+
+                <input type="submit" class="js-cancel-button" value="キャンセル" form="cancelParts">
                 <input type="hidden" name="getPart[]" class="time" value="" form="cancelParts">
                 <input type="hidden" name="getData[]" class="data" value="" form="cancelParts">
+
               </form>
             </div>';
 

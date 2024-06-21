@@ -16,12 +16,15 @@
 @if ($errors->any())
   <div class="alert alert-danger mt-3">
     <ul>
+      {{--バリデーションでエラーの設定--}}
       @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
       @endforeach
     </ul>
   </div>
 @endif
+  {{--routeで新規作成のフォームを呼び出しと登録ボタン
+    で内容の登録--}}
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-25 vh-75 border p-3">
@@ -189,6 +192,7 @@
           <input type="submit" class="btn btn-primary register_btn"  value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
         <div class="text-center">
+          {{----}}
           <a href="{{ route('loginView') }}">ログイン</a>
         </div>
       </div>
