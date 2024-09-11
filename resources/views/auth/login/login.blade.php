@@ -12,15 +12,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body>
+<body class="all_content">
+
   {{--ログイン押下時にメアドとパスワードを判定
     ifで'/top' eiseで戻される--}}
   <form action="{{ route('loginPost') }}" method="POST">
+    <div class="atlas-img"><img class="atlas-black" src="{{ asset('img/atlas-black.png') }}" alt=""></div>
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="border vh-50 w-25">
+      <div class="border vh-50 w-25" id="login-zoon">
+
         <div class="w-75 m-auto pt-5">
-          <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
           <div class="border-bottom border-primary w-100">
+
+          <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
             <input type="text" class="w-100 border-0" name="mail_address">
           </div>
         </div>

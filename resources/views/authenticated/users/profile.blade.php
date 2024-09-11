@@ -22,7 +22,7 @@
             @foreach($subject_lists as $subject_list)
             <div>
               <label>{{ $subject_list->subject }}</label>
-              <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+              <input class="checkbox" type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
             </div>
             @endforeach
             <input type="submit" value="編集" class="btn btn-primary">
